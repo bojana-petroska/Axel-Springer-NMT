@@ -55,25 +55,30 @@ const student = {
     name: 'bo',
     age: 37,
     grade: 5
-}
+};
 
 function displayInfo(arg) {
     console.log(`Her name is ${student.name}.`);
     console.log(`She is ${student.age} years old.`);
     console.log(`And her grade is ${student.grade}.`)
-}
+};
 
 displayInfo({name: "bo", age: 37, grade: 5});
 
 // Task 5: Shopping Cart:
 const cart = {
     items: [],
-    total: 0,
-    addItem(item) {
-        
-
+    totalCost: 0,
+    addItem: function(...newItems) {
+        newItems.forEach(item => {
+            if(typeof item === 'string') {
+                this.items.push(item)
+            };
+        });
     }
 };
+cart.addItem('bread', 'veggies', 'salmon');
+console.log(cart.items);
 
 // Bonus Task: Task 6 - Finding Maximum Number in an Array:
 
@@ -87,4 +92,5 @@ function findMax(arr = []) {
     return Math.max(...arr)
 }
 console.log(findMax([5, 7, 9, 2, 12, 4, 3, 21]));
+//console.log(findMax([5, 7, 'bo', 2, 12, 4, 3, 21]));
 
