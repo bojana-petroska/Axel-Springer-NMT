@@ -1,9 +1,19 @@
 // Classroom Grades
-function Student(firstName, grades) {
-    this.firstName = firstName;
-    this.grades = grades;
-    this.getHighestGrade = function() {
-        return Math.max(...this.grades);
+// function Student(firstName, grades) {
+//     this.firstName = firstName;  //put constructor
+//     this.grades = grades;
+//     this.getHighestGrade = function() {
+//         return Math.max(...this.grades);
+//     }
+// }
+
+class Student {
+    constructor(firstName, grades) { //put constructor
+        this.firstName = firstName;  
+        this.grades = grades;
+        this.getHighestGrade = function() {
+            return Math.max(...this.grades);
+        }
     }
 }
 
@@ -11,17 +21,19 @@ const alice = new Student('Alice', [85, 90, 78]);
 const bob = new Student('Bob', [92, 88, 79]);
 const charlie = new Student('Charlie', [80, 85, 88]);
 
-//console.log(alice.getHighestGrade());
-//console.log(bob.getHighestGrade());
-//console.log(charlie.getHighestGrade());
-
 const classroom = {
-students: [alice, bob, charlie],
+students: [], //try empty []
 averageGrades: {},
 };
 
-//console.log(classroom.students[0].grades);
-//console.log(classroom.students[1]);
+classroom.students.push(alice, bob, charlie);
+
+// console.log(alice.getHighestGrade());
+// console.log(bob.getHighestGrade());
+// console.log(charlie.getHighestGrade());
+
+// console.log(classroom.students[0].grades);
+// console.log(classroom.students[1]);
 
 function calculateAverageGrades(classroom) {
     classroom.students.forEach(student => {
@@ -30,7 +42,7 @@ function calculateAverageGrades(classroom) {
             sumOfGrades += grade;
         });
         const averageGrades = sumOfGrades / student.grades.length;
-        classroom.averageGrades[student.grades] = averageGrades;
+        classroom.averageGrades[student.firstName] = averageGrades;
         //console.log(averageGrades);
     });
     return;
@@ -38,7 +50,8 @@ function calculateAverageGrades(classroom) {
 
 calculateAverageGrades(classroom);
 //console.log(classroom);
-//console.log(classroom.averageGrades);
+//console.log(`Each students average grades are: ${classroom.averageGrades}`);
+console.log(classroom.averageGrades);
 
 // Finding the student with the highest Grades
 
@@ -57,32 +70,34 @@ function findStudentWithHighestGrades(classroom) {
     return highestGradedStudent;
 }
 
-console.log(findStudentWithHighestGrades(classroom));
+console.log(`The student with the highest grade is: ${findStudentWithHighestGrades(classroom)}`);
 
 //Guessing Game
 
-const guessingGame = function() {
-    let targetNumber = Math.floor(Math.random() * 100);
-    console.log(targetNumber);
-    let tries = 0;
+// const guessingGame = function() {
+//     let targetNumber = Math.floor(Math.random() * 100);
+//     console.log(targetNumber);
+//     let tries = 0;
 
-    function userGuess() {
-        const userGuessANumber = prompt('Please enter a number from 1 to 100');
-        console.log(userGuessANumber)
-        return parseInt(userGuessANumber);
-    }
-    let guess = userGuess();
+//     function userGuess() {
+//         const userGuessANumber = prompt('Please enter a number from 1 to 100');
+//         console.log(userGuessANumber)
+//         return parseInt(userGuessANumber);
+//     }
+//     let guess = userGuess();
     
-    while (targetNumber !== guess) {
-        guess = userGuess()
-        tries++;
-        if (guess < targetNumber) {
-            alert('mehh bit low');
-        } else if (guess > targetNumber) {
-            alert('a bit higher than needed')
-        }
-    }
-    alert(`Wuhuuuuu finally! You only needed ${tries} tries!`)
-}
+//     while (targetNumber !== guess) {
+//         guess = userGuess()
+//         if (guess < targetNumber) {
+//             alert('mehh bit low');
+//         } else if (guess > targetNumber) {
+//             alert('a bit higher than needed')
+//         }
+//         tries++;
+//     }
+//     alert(`Wuhuuuuu finally! You only needed ${tries} tries!`)
+// }
 
-guessingGame();
+// guessingGame();
+
+
