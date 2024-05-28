@@ -51,6 +51,10 @@ function calculateAverageGrades(classroom) {
 calculateAverageGrades(classroom);
 //console.log(classroom);
 //console.log(`Each students average grades are: ${classroom.averageGrades}`);
+const eachAverageGrade = classroom.averageGrades;
+console.log(eachAverageGrade);
+const printedEachAverageGrade = `Alices average grade is: ${eachAverageGrade.alice}`;
+console.log(printedEachAverageGrade);
 console.log(classroom.averageGrades);
 
 // Finding the student with the highest Grades
